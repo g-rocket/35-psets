@@ -2,11 +2,17 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
 
+\usepackage{hyperref,url}
+
+\usepackage{lmodern}
+
 % info for header block in upper right hand corner
-\name{}
+\name{Gavin Yancey}
 \class{Probability and Statistics}
 \assignment{Homework 1}
 \duedate{Tuesday, October 27}
+
+\usepackage{epstopdf}
 
 % use \image{my_file.png} to add a centered image %
 %   to your document!                             %
@@ -24,7 +30,11 @@
 \end{problem}
 
 \begin{solution}
-
+	\image{{{oct27g1.1}}}
+	
+	This doesn't show as almost anything about the data.  By rounding each datapoint to the nearest hundred (and so effectively making a fancy-looking histogram), we can get
+	
+	\image{{{oct27g1.2}}}
 \end{solution}
 \newpage
 
@@ -36,7 +46,11 @@
 \end{problem}
 
 \begin{solution}
-
+	\image{{{oct27g2.1}}}
+	
+	Again, this is almost useless.  Again, we can round each datapoint to the nearest hundred to get a more useful plot:
+	
+	\image{{{oct27g2.2}}}
 \end{solution}
 \newpage
 
@@ -48,7 +62,18 @@
 \end{problem}
 
 \begin{solution}
-
+	\begin{tabular}{r|c|c|}
+		& Seeded & Unseeded \\\hline
+		$\bar{x}$ & 441.9846 & 164.5885 \\\hline
+		$\sigma_x$ & 650.7872 & 278.4264 \\\hline
+		min & 4.1 & 1 \\\hline
+		$Q_1$ & 92.4 & 24.4 \\\hline
+		$Q_2$ & 221.6 & 44.2 \\\hline
+		$Q_3$ & 430 & 163 \\\hline
+		max & 2745.6 & 1202.6 \\\hline
+	\end{tabular}
+	
+	Note: there are (according to wikipedia, \url{https://en.wikipedia.org/wiki/Quartile#Computing_methods}), several slightly-different ways to define the first and third quartile, depending on how you want to interpolate, whether you count the median as a whole datapoint or a half-datapoint, and whether you count the endpoints of the dataset as full datapoints or as half datapoints. I calculated this using MATLAB's \texttt{quantile(dataset,[0,.25,.5,.75,1])}, interpolates over the data, but counts the endpoints less; for more details, see \url{http://www.mathworks.com/help/stats/quantiles-and-percentiles.html}. As far as I can tell, this is probably slightly different from how Minitab would calculate the quartiles, which I also does some sort of interpolation, but I can't tell what exactly; for all I could find, see \url{http://support.minitab.com/en-us/minitab/17/topic-library/basic-statistics-and-graphs/graphs/graphs-that-compare-groups/boxplots/quartiles/}. 
 \end{solution}
 \newpage
 
@@ -58,7 +83,9 @@
     Plot side by side boxplots for seeded and unseeded. Why do the boxplots look so bad?
 
 \end{problem}
-
+	\image{oct27g3}
+	
+	The boxplots look rather bad because the data has a skewed distribution, with a lot of high outliers.  It might look better if we took the log of the data or something similar.
 \begin{solution}
 
 \end{solution}
@@ -72,7 +99,7 @@
 \end{problem}
 
 \begin{solution}
-
+	\image{oct27g4}
 \end{solution}
 \newpage
 
@@ -84,7 +111,9 @@
 \end{problem}
 
 \begin{solution}
-
+	\image{oct27g5}
+	
+	This has the outliers at the top, rather than the bottom.  I'm not sure which is more representative of the data; they both look pretty good.
 \end{solution}
 \newpage
 
@@ -96,7 +125,7 @@
 \end{problem}
 
 \begin{solution}
-
+	Yes, it probably did. The plots all show ``seeded'' as generally higher.
 \end{solution}
 \newpage
 
@@ -108,7 +137,7 @@
 \end{problem}
 
 \begin{solution}
-
+	Depending on the circumstances, one could be more or less useful, depending on which is more representative of the actual distribution of the data. 
 \end{solution}
 
 \end{document}
